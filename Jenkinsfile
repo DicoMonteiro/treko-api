@@ -16,7 +16,6 @@ pipeline {
                 sh "npm install"
             }
         }
-        
         stage('Test') {
             steps {
                 sh "npm run test:ci"
@@ -29,6 +28,12 @@ pipeline {
                 }
             }
         }
+        stage('Production') {
+            steps {
+                input message: "Go to production? (clik 'Proceed' to continue)"
+                sh "echo 'subindo em produção'"
+            }
+        }   
     }
 
 }
